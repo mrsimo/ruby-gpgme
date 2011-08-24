@@ -12,7 +12,7 @@ task :compile do
   FileUtils.rm_f('gpgme_n.o')
   FileUtils.rm_f('Makefile')
 
-  system "ruby extconf.rb"
+  system "ruby ext/gpgme/extconf.rb"
   system "make"
 end
 
