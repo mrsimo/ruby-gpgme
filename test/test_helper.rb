@@ -1,4 +1,12 @@
 # -*- encoding: utf-8 -*-
+
+# include compiled gpgme_n.bundle
+tmp_dir = File.join(File.dirname(__FILE__), '..', 'tmp')
+$:.unshift(tmp_dir) if File.directory?(tmp_dir)
+
+# this interfers otherwise with our tests
+ENV.delete('GPG_AGENT_INFO')
+
 require 'rubygems'
 require 'bundler/setup'
 require 'minitest/autorun'
@@ -9,6 +17,7 @@ require 'ruby-debug'
 require 'gpgme'
 
 require File.dirname(__FILE__) + "/support/resources"
+
 
 def import_keys
   KEYS.each do |key|
